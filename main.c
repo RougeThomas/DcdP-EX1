@@ -11,10 +11,10 @@ bool palindrome(const char* const chaine)
     size_t debut = 0;
     size_t fin = strlen(chaine);
 
-    while(debut != fin)
+    while(debut < fin)
     {
         char const gauche = chaine[debut];
-        char const droite = chaine[fin];
+        char const droite = chaine[fin-1];
         if(gauche != droite)
         {
             return false;
