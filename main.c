@@ -33,13 +33,15 @@ char* inverse(char* chaine)
 {
     size_t const longueur = strlen(chaine);
     size_t const mi_longueur = longueur / 2;
+    char temp;
 
     // On échange la première lettre avec la dernière, puis la deuxième avec 
     // l'avant-dernière et ainsi de suite jusqu'au milieu de la chaine.
     for(size_t i = 0; i != mi_longueur; ++i)
     {
-        chaine[i] = chaine[longueur - i];
-        chaine[longueur - i] = chaine[i];
+        temp = chaine[i];
+        chaine[i] = chaine[longueur - i - 1];
+        chaine[longueur - i - 1] = temp;
     }
 
     return chaine;
