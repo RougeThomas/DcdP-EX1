@@ -78,11 +78,17 @@ char* en_chaine(int32_t const nombre, char* chaine)
     for(size_t i = 0; i != n_chiffres; ++i)
     {
         // On isole chaque chiffre du nombre, partant du plus significatif.
-        int32_t const a = nombre / (int32_t)pow(10, n_chiffres - i);    // p. ex. nombre = 1234, i = 1 => a = 12
-        int32_t const b = abs(a) % 10;                                  // p. ex. a = 12 => b = 2
+        int32_t const a = nombre / (int32_t)pow(10, n_chiffres - i - 1);    // p. ex. nombre = 1234, i = 1 => a = 12
+        int32_t const b = abs(a % 10);                                  // p. ex. a = 12 => b = 2
 
         // Le chiffre trouvé est converti en son caractère équivalent.
-        chaine[i] = '0' + b;
+        if(nombre < 0){
+            chaine[i+1] = '0' + b;
+        }
+        else
+        {
+            chaine[i] = '0' + b;
+        }
     }
 
     return chaine;
