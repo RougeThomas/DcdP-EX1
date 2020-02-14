@@ -99,26 +99,26 @@ bool anagramme(char const* const gauche, char const* const droite)
 {
 #define L_ALPHABET ('z' - 'a')
 
-    int lettres[L_ALPHABET] = {0};
+    int lettres[L_ALPHABET + 1] = {0};
 
     // On compte la fréquence de toutes les lettres dans la chaîne gauche.
     for(char const* g = gauche; *g != '\0'; ++g)
     {
-        lettres[*g] += 1;
+        lettres[(*g) - 'a'] += 1;
     }
 
     // On décompte la fréquence de toutes les lettres dans la chaîne droite.
     for(char const* d = droite; *d != '\0'; ++d)
     {
-        lettres[*d] -= 1;
+        lettres[(*d) - 'a'] -= 1;
     }
 
     // Si les comptes n'arrivent pas à zéro, ce n'est pas un anagramme.
-    for(size_t i = 0; i != L_ALPHABET; ++i)
+    for(size_t i = 0; i != L_ALPHABET + 1; ++i)
     {
         if(lettres[i] != 0)
         {
-            return true;
+            return false;
         }
     }
 
